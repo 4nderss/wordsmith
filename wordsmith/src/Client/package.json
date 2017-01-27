@@ -51,18 +51,14 @@
   ],
   "license": "MIT",
   "author": "Anders Ulfheden <anders@usys.se>",
-  "contributors": [
-
-  ],
+  "contributors": [],
   "bugs": {
     "url": "https://github.com/4nderss/wordsmith"
   },
   "homepage": "https://github.com/4nderss/wordsmith#readme",
   "aurelia": {
     "build": {
-      "resources": [
-      
-      ]
+      "resources": []
     }
   },
   "dependencies": {
@@ -85,17 +81,16 @@
     "font-awesome": "^4.7.0",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.1",
+    "jquery-easing": "0.0.1",
     "magnific-popup": "1.1.0",
     "scrollreveal": "3.3.2",
-    "jquery-easing": "0.0.1"
-    
+    "whatwg-fetch": "^2.0.2"
   },
   "devDependencies": {
     "@easy-webpack/config-aurelia": "^2.2.2",
     "@easy-webpack/config-common-chunks-simple": "^2.0.3",
     "@easy-webpack/config-copy-files": "^1.1.2",
     "@easy-webpack/config-css": "^4.0.0",
-    "@easy-webpack/config-less": "3.0.0",
     "@easy-webpack/config-env-development": "^2.1.5",
     "@easy-webpack/config-env-production": "^3.0.0",
     "@easy-webpack/config-external-source-maps": "^3.1.0",
@@ -105,6 +100,7 @@
     "@easy-webpack/config-global-jquery": "^2.1.0",
     "@easy-webpack/config-html": "^3.1.0",
     "@easy-webpack/config-json": "^3.1.0",
+    "@easy-webpack/config-less": "3.0.0",
     "@easy-webpack/config-source-map-support": "^1.0.2",
     "@easy-webpack/config-test-coverage-istanbul": "^3.2.0",
     "@easy-webpack/config-typescript": "^5.0.0",
@@ -129,13 +125,13 @@
     "karma-remap-istanbul": "^0.4.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.2",
+    "less": "2.7.2",
     "protractor": "^5.0.0",
     "ts-node": "^2.0.0",
     "typescript": "^2.1",
     "wait-on": "^2.0.1",
     "wallaby-webpack": "0.0.32",
-    "webpack": "2.1.0-beta.27",
-    "webpack-dev-server": "2.1.0-beta.12",
-    "less": "2.7.2"
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "2.2.0"
   }
 }

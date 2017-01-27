@@ -6,7 +6,7 @@ export class Start {
 
     input: string = "";
     output: string = "";
-    statistics: StatisticsModel;
+    statistics: StatisticsModel = null;
     
 
     isLoading: boolean = false;
