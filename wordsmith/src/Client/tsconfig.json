@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowJs": true,
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true
+  },
+  "filesGlob": [
+    "./src/**/*.ts",
+    "./test/**/*.ts",
+    "./node_modules/@types/index.d.ts",
+    "./node_modules/**/*.d.ts",
+    "./custom_typings/**/*.d.ts",
+    "./typings/**/*.d.ts"
+
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
