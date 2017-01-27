@@ -1,21 +1,52 @@
 ﻿import {json} from 'aurelia-fetch-client'
 import {ClientContainer} from "./clientcontainer";
 
+export class QueryParams {
+    param: string;
+    value: string;
+}
+
 export class BaseService {
 
 
     constructor(public httpClientContainer: ClientContainer) {
-
+        
     }
 
-    protected get<T>(url: string, responseHandler: Function): Promise<T> {
+    private buildQueryString(params: QueryParams[]) : string {
+
+        let querystring = "";
+        if (params && params.length > 0) {
+            for (let i = 0; i < params.length; i++) {
+                let queryParam = i == 0 ? '?' : '&';
+                queryParam += params[i].param + "=" + encodeURIComponent(params[i].value);
+                querystring += queryParam;
+            }
+        }
+        return querystring;
+    }
+
+    protected get<T>(url: string, useCache: boolean, responseHandler: Function, ...queryParams: QueryParams[]): Promise<T> {
+
+
+        let queryString = this.buildQueryString(queryParams);
+
 
         return this
-            .sendRequest(url, 'GET')
+            .sendRequest(url + queryString, 'GET', null, useCache, queryString)
             .then(response => { return responseHandler(response); });
     }
 
-    private sendRequest(url: string, requestMethod: string, body: any = null, forceCache: boolean = true): Promise<any> {
+
+    protected post<T>(url: string, global: boolean = false, body: any = null, globalErrorHandling: boolean = true, ...queryParams: QueryParams[]): Promise<any> {
+        let queryString = this.buildQueryString(queryParams);
+
+        return this.sendRequest(url + queryString, 'POST', body, globalErrorHandling, queryString);
+    }
+
+
+    
+    private sendRequest(url: string, requestMethod: string, body: any = null, forceCache: boolean = true, queryString: string): Promise<any> {
 
         let request: any = { method: requestMethod };
         if (body !== null) {
@@ -24,23 +55,7 @@ export class BaseService {
 
         const querystringIndex = url.indexOf("?");
         const hasQuerystring = querystringIndex !== -1;
-
-        if (requestMethod === 'GET') {
-
-            if (hasQuerystring) {
-
-                const querystring = url.substring(querystringIndex + 1, url.length);
-                const newQuerystring = querystring.split("&").map(queryValue => {
-                    let indexOfEquals = queryValue.indexOf("=");
-
-                    const param = queryValue.substring(0, indexOfEquals);
-                    const value = queryValue.substring(indexOfEquals + 1, queryValue.length);
-                    return param + "=" + encodeURIComponent(value);
-                }).join("&");
-
-                url = url.substring(0, querystringIndex + 1) + newQuerystring;
-            }
-        }
+               
 
         if (forceCache) {
             if (hasQuerystring) {

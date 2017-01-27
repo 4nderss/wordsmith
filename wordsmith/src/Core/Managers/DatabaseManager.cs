@@ -43,11 +43,6 @@ namespace WordSmith.Core.Managers {
             return null;
         }
 
-        private struct PopularSentenceEntry {
-            public string Sentence;
-            public int Hits;
-        }
-
         public async Task<string[]> GetMostPopularSentencesAsync() {
 
           
@@ -77,6 +72,10 @@ namespace WordSmith.Core.Managers {
                 return count.FirstOrDefault();
             }
             return 0;
+        }
+
+        public async Task LogErrorAsync(ErrorLog logEntry) {
+            await this.Database.InsertAsync(logEntry).ConfigureAwait(false);
         }
     }
 }

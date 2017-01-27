@@ -30,6 +30,22 @@ namespace WordSmith.Core.Models.Database {
 			[Column] public DateTime LogDate { get; set; }
 	
 	}
+    
+	[TableName("tErrorLog")]
+			[PrimaryKey("Id")]
+				[ExplicitColumns]
+    public partial class ErrorLog {
+			[Column] public int Id { get; set; }
+	
+			[Column] public DateTime LogDate { get; set; }
+	
+			[Column] public string Message { get; set; }
+	
+			[Column] public string Stacktrace { get; set; }
+	
+			[Column] public string Server { get; set; }
+	
+	}
 }
 
 

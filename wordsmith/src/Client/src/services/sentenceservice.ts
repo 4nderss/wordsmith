@@ -1,7 +1,8 @@
 ﻿import {inject} from "aurelia-framework";
 import {ClientContainer} from "./clientcontainer";
-import {BaseService} from "./baseservice";
+import {BaseService, QueryParams} from "./baseservice";
 import {StatisticsModel} from "../models/app/statisticsmodel";
+
 
 export class SentenceService extends BaseService {
 
@@ -11,15 +12,21 @@ export class SentenceService extends BaseService {
     }
 
     getTransformedSentence(word: string): Promise<string> {
-        return this.get("sentence?input=" + word, (result) => {
+        var sentenceParam = new QueryParams();
+        sentenceParam.param = "input";
+        sentenceParam.value = word;
+
+
+
+        return this.get("sentence", false, (result) => {
             return result;
-        });
+        }, sentenceParam);
     }
 
     getStatistics(): Promise<StatisticsModel> {
-        return this.get("statistics", (result) => {
+        return this.get("statistics", false, (result) => {
             if (result) {
-               return StatisticsModel.ConvertFromServiceModel(result);
+                return StatisticsModel.ConvertFromServiceModel(result);
             };
         });
     }
