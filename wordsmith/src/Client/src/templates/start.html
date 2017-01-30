@@ -8,18 +8,18 @@
                         <hr class="light">
                         <p class="text-faded">Just enter your text below, and let us do our magic!</p>
                         <div class="form-group" show.bind="!isLoading">
-                            <textarea class="form-control" rows="3" value.bind="input" placeholder="Write your sentence here"></textarea>
+                            <textarea class="form-control" rows="3" id="SentenceInput" value.bind="input" placeholder="Write your sentence here"></textarea>
                         </div>
                         <div show.bind="isLoading" class="spaceBelow">
                             <i class="fa fa-spinner fa-spin"></i>
                             <p class="text-faded">Just a moment please..</p>
                         </div>
-                        <button show.bind="!isLoading" type="button" disabled.bind="input.length == 0" click.trigger="transformSentence()" class="page-scroll btn btn-default btn-xl sr-button">Transform my sentence!</button>
+                        <button show.bind="!isLoading" type="button" click.trigger="transformSentence()" id="TransformBtn" class="page-scroll btn btn-default btn-xl sr-button">Transform my sentence!</button>
                     </div>
 
 
                     <div show.bind="output.length !== 0 && !isFaulted">
-                        <h2 class="section-heading">${output}</h2>
+                        <h2 id="TransformedSentence" class="section-heading">${output}</h2>
                         <hr class="light">
                         <p class="text-faded">It's that simple! Want another go? Just click the button below!</p>
                         <button type="button" click.trigger="resetSentence()" class="page-scroll btn btn-default btn-xl">Try again</button>

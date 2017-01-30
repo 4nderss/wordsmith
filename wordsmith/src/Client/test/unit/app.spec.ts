@@ -14,7 +14,7 @@ class RouterStub {
 }
 
 describe('the App module', () => {
-  let sut;
+  let sut;  
   let mockedRouter;
 
   beforeEach(() => {
@@ -28,11 +28,11 @@ describe('the App module', () => {
   });
 
   it('configures the router title', () => {
-    expect(sut.router.title).toEqual('Wordsmith');
+      expect(sut.router.title).toEqual('Wordsmith Inc');
   });
 
-  it('should have a welcome route', () => {
-    expect(sut.router.routes).toContain({ route: ['', 'welcome'], name: 'welcome',  moduleId: './welcome', nav: true, title: 'Welcome' });
+  it('should have a start route', () => {
+      expect(sut.router.routes).toContain({ route: ['', 'start'], name: 'start',  moduleId: './templates/start', nav: true });
   });
     
 });
