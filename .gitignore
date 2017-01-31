@@ -219,4 +219,4 @@ ModelManifest.xml
 
 
 PublishProfiles/
-appsettings.release.json
+appsettings.local.json

@@ -6,19 +6,30 @@ export class Start {
 
     input: string = "";
     output: string = "";
-    statistics: StatisticsModel = null;
     
 
     isLoading: boolean = false;
     isFaulted: boolean = false;
+
+    statistics: StatisticsModel = null;
+    statisticsFaulted: boolean = false;
+    statisticsLoading: boolean = false;
+
     static inject = [SentenceService]
     constructor(public sentenceService: SentenceService) {
 
     }
 
     activate() {
+        this.statisticsLoading = true;
+
         this.sentenceService.getStatistics().then(statistics => {
             this.statistics = statistics;
+            this.statisticsLoading = false;
+
+        }).catch(() => {
+            this.statisticsLoading = false;
+            this.statisticsFaulted = true;
         });
     }
     

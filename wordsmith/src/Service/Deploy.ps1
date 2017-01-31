@@ -5,6 +5,15 @@ $ErrorActionPreference = "Stop"
 
 Start-Transcript -path $PSScriptRoot\Deploy.log
 
+
+Write-Output "Cleaning dist"
+
+$distPath = $PSScriptRoot + '\dist'
+
+If (Test-Path $distPath) {
+	Remove-Item -Recurse -Force $distPath
+}
+
 Write-Output "Building application"
 dotnet.exe build $PSScriptRoot --configuration Release 2>&1 | out-host
 
@@ -20,4 +29,7 @@ If(!$?) {
     exit 1;
 }
 
-dotnet.exe publish $PSScriptRoot --output $PSScriptRoot/dist/ --configuration Release --no-build 2>&1 | Out-Host
+
+
+
+dotnet.exe publish $PSScriptRoot --output $distPath --configuration Release --no-build 2>&1 | Out-Host

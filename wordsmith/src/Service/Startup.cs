@@ -24,7 +24,7 @@ namespace Service
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile($"appsettings.local.json", optional: true)
                 .AddEnvironmentVariables();
             this.Configuration = builder.Build();
         }

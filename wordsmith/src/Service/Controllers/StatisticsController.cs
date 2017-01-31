@@ -7,7 +7,6 @@ namespace Service.Controllers {
     [Route("/api/statistics/")]
     public class StatisticsController : Controller {
 
-        private readonly ISentenceManager _sentenceManager;
         private readonly IDatabaseManager _databaseManager;
 
         public StatisticsController(IDatabaseManager databaseManager) {
