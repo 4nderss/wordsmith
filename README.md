@@ -1,6 +1,6 @@
 # Wordsmith
 
-The Client is an aurelia, webpack and boostrap based responsive web client.
+The Client is an aurelia, webpack and bootstrap based responsive web client.
 
 The client project can be found 
 --> [Here](wordsmith/src/Client/).
