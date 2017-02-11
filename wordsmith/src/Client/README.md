@@ -80,3 +80,8 @@ Integration tests are performed with [Protractor](http://angular.github.io/protr
   npm run e2e:start
   ```
 
+
+### Configuring client
+
+Set your service url in applicationsettings.ts
+
