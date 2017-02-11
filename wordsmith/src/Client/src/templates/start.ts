@@ -1,4 +1,4 @@
-import {inject} from 'aurelia-framework';
+import {inject, TaskQueue} from 'aurelia-framework';
 import {SentenceService} from "../services/sentenceservice";
 import {StatisticsModel} from "../models/app/statisticsmodel";
 
@@ -15,8 +15,10 @@ export class Start {
     statisticsFaulted: boolean = false;
     statisticsLoading: boolean = false;
 
-    static inject = [SentenceService]
-    constructor(public sentenceService: SentenceService) {
+
+
+    static inject = [SentenceService, TaskQueue]
+    constructor(public sentenceService: SentenceService, public taskQueue: TaskQueue) {
 
     }
 
@@ -41,6 +43,17 @@ export class Start {
         this.sentenceService.getTransformedSentence(this.input).then(transformedSentence => {
             this.output = transformedSentence;
             this.isLoading = false;
+
+            this.taskQueue.queueTask(() => {
+                //Handeheld scroll bug
+                if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+                    location.hash = "#tryit";
+                }
+
+            });
+            
+
+
         }).catch(err => {
             this.isLoading = false;
             this.isFaulted = true;

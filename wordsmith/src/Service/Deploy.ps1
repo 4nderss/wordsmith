@@ -5,8 +5,10 @@ $ErrorActionPreference = "Stop"
 
 Start-Transcript -path $PSScriptRoot\Deploy.log
 
+dotnet.exe restore
 
 Write-Output "Cleaning dist"
+
 
 $distPath = $PSScriptRoot + '\dist'
 

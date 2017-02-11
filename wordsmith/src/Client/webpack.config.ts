@@ -102,11 +102,12 @@ let config = generateConfig(
     fontAndImages(),
     globalBluebird(),
     globalJquery(),
-    generateIndexHtml({ minify: ENV === 'production'}),
+    generateIndexHtml({ template: 'index.html',  minify: ENV === 'production' }),
 
     ...(ENV === 'production' || ENV === 'development' ? [
         commonChunksOptimize({ appChunkName: 'app', firstChunk: 'aurelia-bootstrap' }),
-        copyFiles({ patterns: [{ from: 'favicon.ico', to: 'favicon.ico' }] })
+        copyFiles({ patterns: [{ from: 'favicon*.*' }] })
+
     ] : [
             /* ENV === 'test' */
             generateCoverage({ options: { esModules: true } })
