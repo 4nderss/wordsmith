@@ -1,11 +1,11 @@
 # Wordsmith
 
-Client is an aurelia, webpack and boostrap based responsive web client.
+The Client is an aurelia, webpack and boostrap based responsive web client.
 
-Client can be found 
---> [Here](wordsmith/src/Client/)
+The client project can be found 
+--> [Here](wordsmith/src/Client/).
 
-Service is an .NET Core REST API.
+The Service is an .NET Core REST API.
 
-Service can be found
---> [Here](wordsmith/src/Service/)
+The service project can be found
+--> [Here](wordsmith/src/Service/).
