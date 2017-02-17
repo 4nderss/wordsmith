@@ -37,6 +37,10 @@ export class Start {
     
     
     transformSentence() {
+        if (this.input.length == 0) {
+            return;
+        }
+
         this.isLoading =  true;
         this.isFaulted = false;
 
